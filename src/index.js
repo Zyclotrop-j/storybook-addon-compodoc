@@ -1,16 +1,27 @@
-import React from 'react';
-import addons from '@storybook/addons';
+import React from "react";
+import addons, { makeDecorator } from "@storybook/addons";
 
-import { ORG_KEY, ADDON_KEY, WITH_COMPODOC_KEY } from './constants';
+import {
+  ORG_KEY,
+  ADDON_KEY,
+  COMPONENT_NAME_KEY,
+  OPTIONS_KEY
+} from "./constants";
 
-export const withCompodoc = (storyFn, opts = {}) =>
-  ((context) => {
+export const withCompodoc = makeDecorator({
+  name: "withCompodoc",
+  parameterName: "componentClassName",
+  wrapper: (storyFn, context, { parameters, options }) => {
     const channel = addons.getChannel();
-    const story = storyFn(context);
 
-    channel.emit(`${ORG_KEY}/${ADDON_KEY}/${WITH_COMPODOC_KEY}`, opts, story.component.name);
+    channel.emit(`${ORG_KEY}/${ADDON_KEY}/event`, {
+      componentName: parameters
+    });
+    return storyFn(context);
+  }
+});
 
-    return story
-  })
-
-
+export const configureCompodoc = ({ compodocUrl }) => {
+  const channel = addons.getChannel();
+  channel.emit(`${ORG_KEY}/${ADDON_KEY}/event`, { compodocUrl });
+};
