@@ -18,13 +18,13 @@
     "url": "http://wojciech-grabowski.pl"
   },
   "license": "ISC",
-  "dependencies": {},
-  "peerDependencies": {
-    "react": "*",
+  "dependencies": {
     "@storybook/addons": "^5.0.1"
   },
+  "peerDependencies": {
+    "react": "*"
+  },
   "devDependencies": {
-    "@storybook/addons": "^5.0.1",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1"
