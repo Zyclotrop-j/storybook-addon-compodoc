@@ -16,7 +16,7 @@ This addon adds panel which will show Compodoc page related to component from se
 
 ### Register addon
 
-Don't forget to register addon in your `addons.js` file. To do so one should include `import 'storybook-addon-compodoc/register;` line there.
+Don't forget to register addon in your `addons.js` file. To do so one should include `import 'storybook-addon-compodoc/register';` line there.
 
 ### In config.js
 
