@@ -65,7 +65,7 @@ export default function register(type) {
   return addons.register(`${ORG_KEY}/${ADDON_KEY}`, api => {
     addons.addPanel(`${ORG_KEY}/${ADDON_KEY}panel`, {
       title: "Compodoc",
-      type: "tab",
+      type: type,
       route: ({ storyId }) => `/compodoc/${storyId}`,
       match: ({ viewMode }) => viewMode === 'compodoc',
       render: () => <CompodocFrame channel={addons.getChannel()} api={api} />
