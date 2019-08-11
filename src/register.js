@@ -37,6 +37,11 @@ class CompodocFrame extends React.Component {
   }
 
   render() {
+    const { active } = this.props;
+    if(!active) {
+      return null;
+    }
+    
     const { componentName, compodocUrl } = this.state;
     if (compodocUrl && componentName) {
       return (
@@ -64,6 +69,6 @@ class CompodocFrame extends React.Component {
 addons.register(`${ORG_KEY}/${ADDON_KEY}`, api => {
   addons.addPanel(`${ORG_KEY}/${ADDON_KEY}panel`, {
     title: "Compodoc",
-    render: () => <CompodocFrame channel={addons.getChannel()} api={api} />
+    render: ({ active, key }) => <CompodocFrame active={active} key={key} channel={addons.getChannel()} api={api} />
   });
 });
