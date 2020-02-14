@@ -37,6 +37,11 @@ class CompodocFrame extends React.Component {
   }
 
   render() {
+    const { active } = this.props;
+    if(!active) {
+      return null;
+    }
+    
     const { componentName, compodocUrl } = this.state;
     if (compodocUrl && componentName) {
       return (
